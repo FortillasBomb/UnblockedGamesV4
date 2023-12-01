@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            flex-direction: column;
+        }
+        .button {
+            font-size: 24px;
+            padding: 20px 40px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #terms {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            text-align: justify;
+        }
+    </style>
+    <script>
+        function openTabs() {
+            let i = 0;
+
+            function getRandomPosition() {
+                let width = window.innerWidth;
+                let height = window.innerHeight;
+                let randomX = Math.floor(Math.random() * (width - 800));
+                let randomY = Math.floor(Math.random() * (height - 600));
+                return [randomX, randomY];
+            }
+
+            function getRandomSize() {
+                let minWidth = 200;
+                let maxWidth = 1200;
+                let minHeight = 200;
+                let maxHeight = 800;
+                let randomWidth = Math.floor(Math.random() * (maxWidth - minWidth + 1)) + minWidth;
+                let randomHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
+                return [randomWidth, randomHeight];
+            }
+
+            function openNewWindow() {
+                let url = "https://codehs.com/uploads/e14e631666315d61fc8a99e36311000a";
+                let [x, y] = getRandomPosition();
+                let [width, height] = getRandomSize();
+
+                let newWindow = window.open(url, "_blank", `width=${width},height=${height},left=${x},top=${y}`);
+
+                if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                    clearInterval(interval);
+                    console.log("Stopped opening new windows.");
+                }
+
+                i++;
+                console.log("Opened window " + i);
+
+                // Play sound
+                let audio = new Audio("https://codehs.com/uploads/f3d09d8584bf8a804acea3c8a9a9a4d2");
+                audio.play();
+            }
+
+            let interval = setInterval(openNewWindow, 50); // Adjust the interval as per your requirements (50 milliseconds = 0.05 seconds)
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("terms").innerHTML += "<h1>unblocked games:</h1>";
+            document.getElementById("terms").innerHTML += "<ul>";
+            document.getElementById("terms").innerHTML += "<li>fortnite</li>";
+            document.getElementById("terms").innerHTML += "<li>roblox</li>";
+            document.getElementById("terms").innerHTML += "<li>gta 5</li>";
+            document.getElementById("terms").innerHTML += "</ul>";
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="terms">
+            <h1></h1>
+            <p></p>
+        </div>
+        <button class="button" onclick="openTabs()">click to open unblocked games</button>
+    </div>
+</body>
+</html>
